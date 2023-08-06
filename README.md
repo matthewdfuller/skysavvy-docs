@@ -86,8 +86,9 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
 {
     "manifest_version": 3,
     "name": "SkySavvy",
-    "description": "Enhanced Google Flights for aviation enthusiasts",
+    "description": "Enhanced Google Flights for savvy travelers",
     "version": "1.0.0",
+    "version_name": "1.0.0 - Beta",
     "icons": {
         "16": "images/icon-16.png",
         "32": "images/icon-32.png",
@@ -97,7 +98,33 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
     "content_scripts": [
         {
             "matches": [
-                "https://www.google.com/travel/flights*"
+                "https://www.google.com/travel/flights*",
+                "https://www.google.ca/travel/flights*",
+                "https://www.google.com.pr/travel/flights*",
+                "https://www.google.ie/travel/flights*",
+                "https://www.google.ch/travel/flights*",
+                "https://www.google.com.my/travel/flights*",
+                "https://www.google.be/travel/flights*",
+                "https://www.google.nl/travel/flights*",
+                "https://www.google.pt/travel/flights*",
+                "https://www.google.es/travel/flights*",
+                "https://www.google.de/travel/flights*",
+                "https://www.google.com.br/travel/flights*",
+                "https://www.google.co.nz/travel/flights*",
+                "https://www.google.co.uk/travel/flights*",
+                "https://www.google.at/travel/flights*",
+                "https://www.google.fr/travel/flights*",
+                "https://www.google.com.au/travel/flights*",
+                "https://www.google.no/travel/flights*",
+                "https://www.google.se/travel/flights*",
+                "https://www.google.dk/travel/flights*",
+                "https://www.google.it/travel/flights*",
+                "https://www.google.com.mx/travel/flights*",
+                "https://www.google.co.in/travel/flights*",
+                "https://www.google.pl/travel/flights*",
+                "https://www.google.co.id/travel/flights*",
+                "https://www.google.co.jp/travel/flights*",
+                "https://www.google.ru/travel/flights*"
             ],
             "js": [
                 "jquery.min.js",
@@ -111,9 +138,37 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
     "web_accessible_resources": [
         {
             "matches": [
-                "https://www.google.com/*"
+                "https://www.google.com/*",
+                "https://www.google.ca/*",
+                "https://www.google.com.pr/*",
+                "https://www.google.ie/*",
+                "https://www.google.ch/*",
+                "https://www.google.com.my/*",
+                "https://www.google.be/*",
+                "https://www.google.nl/*",
+                "https://www.google.pt/*",
+                "https://www.google.es/*",
+                "https://www.google.de/*",
+                "https://www.google.com.br/*",
+                "https://www.google.co.nz/*",
+                "https://www.google.co.uk/*",
+                "https://www.google.at/*",
+                "https://www.google.fr/*",
+                "https://www.google.com.au/*",
+                "https://www.google.no/*",
+                "https://www.google.se/*",
+                "https://www.google.dk/*",
+                "https://www.google.it/*",
+                "https://www.google.com.mx/*",
+                "https://www.google.co.in/*",
+                "https://www.google.pl/*",
+                "https://www.google.co.id/*",
+                "https://www.google.co.jp/*",
+                "https://www.google.ru/*"
             ],
-            "resources": ["images/icon-128.png"]
+            "resources": [
+                "images/icon-128.png"
+            ]
         }
     ],
     "action": {
@@ -128,9 +183,6 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
     },
     "permissions": [
         "storage"
-    ],
-    "host_permissions": [
-        "https://www.google.com/travel/flights*"
     ]
 }
 ```
@@ -164,6 +216,9 @@ Not at this time. The only way to use SkySavvy is via the Chrome extension.
 
 #### Is SkySavvy safe to use?
 Yes. The SkySavvy extension only runs on the Google Flights webpage and does not depend on any third-party code. API calls are made over HTTPS and do not include any personally-identifiable data. SkySavvy does not have any trackers or ads.
+
+#### Why does Chrome say the extension needs access to google.com?
+The Chrome Extension permissions model is limited to displaying the top-level domain in the "accept permissions" dialog. However, SkySavvy only runs on `https://www.google.com/travel/flights*`. SkySavvy does not have access to any other Google sites.
 
 #### SkySavvy is showing inaccurate data.
 Please report the issue (see [Support](#support) below). Unfortunately, with 10s of 1000s of combinations of airlines, aircraft, airports, and routes, we sometimes have inaccurate data. But we'll do our best to fix it!
