@@ -36,6 +36,7 @@ SkySavvy makes several changes to the Google Flights interface:
 ### Additional Flight Data
 For each supported flight search result, SkySavvy injects additional data about the airports, airline, aircraft, flight, seats, and award programs.
 
+* Adds seat and leg room information to each flight
 * Adds a FlightAware link for each flight segment
 * Adds detailed aircraft IATA code and Wikipedia link
 * Adds SeatGuru link for the specific aircraft type
@@ -68,6 +69,7 @@ SkySavvy takes your privacy seriously (see [Security and Privacy](#security-and-
 
 SkySavvy supports configuring what page modifications are made. Currently, this includes:
 
+* Enabling/disabling the extension entirely
 * Enabling/disabling the display of inline media (photos, videos, etc.)
 * Enabling/disabling the display of FlightAware links
 * Enabling/disabling the display of award program and transfer partner data
@@ -87,8 +89,8 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
     "manifest_version": 3,
     "name": "SkySavvy",
     "description": "Enhanced Google Flights for savvy travelers",
-    "version": "1.0.0",
-    "version_name": "1.0.0 - Beta",
+    "version": "1.1.0",
+    "version_name": "1.1.0 - Beta",
     "icons": {
         "16": "images/icon-16.png",
         "32": "images/icon-32.png",
@@ -189,20 +191,6 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
 
 </details>
 
-SkySavvy uses an API, `api.skysavvy.co`, to obtain additional data about each flight segment, which it uses to augment the flight search results. The following is a complete list of the data sent to this API:
-
-* The flight cost (e.g., `$1,500`)
-* The flight origin (e.g., `NYC`)
-* The flight destination (e.g., `ATL`)
-* The airline (e.g., `American Airlines`)
-* The flight number (e.g., `DL 123`)
-* The cabin type (e.g., `Business Class`)
-* The aircraft type (e.g., `Boeing 717`)
-
-Additionally, as part of making an API request, your IP address and browser user agent are transmitted to SkySavvy. Note that this data is only used temporarily to provide a reliable service (i.e. for rate-limiting, avoiding abuse, or debugging issues), but is not saved for longer than 30 days or otherwise used to process or customize the request.
-
-No personally-identifiable information (e.g., name, email, etc.) is sent to SkySavvy.
-
 ## FAQ
 
 #### Why should I use SkySavvy?
@@ -215,7 +203,7 @@ SkySavvy is installed via the Chrome Web Store by clicking "install." No other s
 Not at this time. The only way to use SkySavvy is via the Chrome extension.
 
 #### Is SkySavvy safe to use?
-Yes. The SkySavvy extension only runs on the Google Flights webpage and does not depend on any third-party code. API calls are made over HTTPS and do not include any personally-identifiable data. SkySavvy does not have any trackers or ads.
+Yes. The SkySavvy extension only runs on the Google Flights webpage and does not depend on any third-party code. SkySavvy does not have any trackers or ads.
 
 #### Why does Chrome say the extension needs access to google.com?
 The Chrome Extension permissions model is limited to displaying the top-level domain in the "accept permissions" dialog. However, SkySavvy only runs on `https://www.google.com/travel/flights*`. SkySavvy does not have access to any other Google sites.
@@ -228,7 +216,7 @@ SkySavvy is under active development. We're aware of several issues that may aff
 
 * Injected flight data for a search result disappears if you expand another search result. You can get it back by collapsing and expanding the same flight again.
 * Injected flight data is not shown on the final flight summary confirmation page
-* We currently only have holiday data for 2023. We'll add 2024 soon.
+* Injected seat and legroom information may flash or disappear when flight details are expanded and collapsed
 * Some FlightAware links do not match the routes shown by Google Flights. We believe this is due to airlines changing routes > 30 days in the future.
 * Some aircraft data may be inaccurate if Google doesn't specify the specific aircraft model. For example: Boeing 767 could be a Boeing 767-300 or 767-400.
 
