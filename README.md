@@ -4,7 +4,7 @@
 
 ## Install
 
-(Link to Chrome Web Store)
+[Install via the Chrome Web Store](https://chrome.google.com/webstore/detail/skysavvy-enhance-google-f/kpdeplhmnofpohflebkiigblcpogmdeg)
 
 ## Background
 
@@ -42,6 +42,7 @@ For each supported flight search result, SkySavvy injects additional data about 
 * Adds SeatGuru link for the specific aircraft type
 * Adds LoungeBuddy links for lounges in the origin and destination airports
 * Adds airline miles award program data
+* Adds estimated award program point values
 * Adds airline transfer partner data (and point transfer ratios)
 * Adds visual call outs for Delta One, Delta One Suites, and Qsuites in business class
 
@@ -51,6 +52,15 @@ For each supported flight search result, SkySavvy injects additional data about 
 | <img src="img/details-before.png" />   | <img src="img/details-after.png" alt="SkySavvy screenshot" />  |
 | <img src="img/aircraft-before.png" />   | <img src="img/aircraft-after.png" alt="SkySavvy screenshot" />  |
 | <img src="img/biz-before.png" />   | <img src="img/biz-after.png" alt="SkySavvy screenshot" />  |
+
+### Additional Filters
+
+* Adds a filter to show only lie-flat business class seats
+* Adds a filter to show only business class suites (Delta One, Qsuites, etc.)
+
+| Before | After |
+|--------|-------|
+| <img src="img/filters-before.png" />   | <img src="img/filters-after.png" alt="SkySavvy screenshot" />  |
 
 ### Flight Media
 For each supported flight search result, SkySavvy injects photos, videos, and links to relevant flight review blogs, or walkthrough videos. This is useful when flying business class if you want to find out what the seat type and cabin arrangement looks like.
@@ -80,17 +90,21 @@ These options can be configured by clicking on the extension and checking or unc
 
 ## Security and Privacy
 
-The SkySavvy extension uses Chrome manifest v3 and injects its background script into only pages matching the format `https://www.google.com/travel/flights*`. It requests only the `storage` permission, used to persistently save the configuration options for the extension. A complete copy of the `manifest.json` file can be seen below:
+The SkySavvy extension uses Chrome manifest v3 and injects its background script into only pages matching the format `https://www.google.com/travel/flights*`. It requests only the `storage` permission, used to persistently save the configuration options for the extension.
+
+SkySavvy does not collect, transmit, or store any user data, private data, search data, or otherwise. All data is processed locally within the extension. SkySavvy does not include any trackers, ads, or other third-party scripts other than Jquery (loaded locally).
+
+A complete copy of the `manifest.json` file can be seen below:
 
 <details>
 
 ```json
 {
     "manifest_version": 3,
-    "name": "SkySavvy",
+    "name": "SkySavvy - Enhance Google Flights",
     "description": "Enhanced Google Flights for savvy travelers",
-    "version": "1.1.0",
-    "version_name": "1.1.0 - Beta",
+    "version": "1.4.0",
+    "version_name": "1.4.0 - Beta",
     "icons": {
         "16": "images/icon-16.png",
         "32": "images/icon-32.png",
@@ -169,7 +183,9 @@ The SkySavvy extension uses Chrome manifest v3 and injects its background script
                 "https://www.google.ru/*"
             ],
             "resources": [
-                "images/icon-128.png"
+                "data/*.json",
+                "images/*",
+                "interceptor.js"
             ]
         }
     ],
