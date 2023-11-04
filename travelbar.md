@@ -8,6 +8,6 @@ To get started, simply type `ss` (for "SkySavvy") in the URL bar. You'll see the
 
 * `ss [airport]` - Example: `ss jfk` - Search for an airport by its IATA code. Returns the airport name and location.
 * `ss [airline]` - Example: `ss ua` - Search for an airline by its IATA code. Returns the airline name, details, alliance, and transfer partners.
-* `ss [flight number` - Example: `ss ua108` - Search for a flight number. Returns direct links to FlightAware and FlightStats.
-* `ss [airport] [airport` - Example: `ss jfk hnl` - Trigger a new Google Flights search for the given origin and destination.
+* `ss [flight number]` - Example: `ss ua108` - Search for a flight number. Returns direct links to FlightAware and FlightStats.
+* `ss [airport] [airport]` - Example: `ss jfk hnl` - Trigger a new Google Flights search for the given origin and destination.
 * `ss help` - Open this page.
